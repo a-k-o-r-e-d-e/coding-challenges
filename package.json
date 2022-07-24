@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only hacker-rank/1-week-kit/day-5/queue-using-two-stacks.ts"
+    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only codility-practice/seconds-to-time-string.ts"
   },
   "keywords": [],
   "author": "Lone Wolf",

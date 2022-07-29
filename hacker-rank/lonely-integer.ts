@@ -1,13 +1,16 @@
-/// Given an array of integers, where all elements but one occur twice, find the unique element.
-/// Example
-/// a = [1, 2,3, 4, 3, 2, 1]
-// the unique element is 4
-
-/*
- * Complete the 'lonelyinteger' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts INTEGER_ARRAY a as parameter.
+/**
+ *  Given an array of integers, where all elements but one occur twice, find the unique element.
+ * 
+ * Example
+ *      a = [1, 2,3, 4, 3, 2, 1]
+ * 
+ * Function Description
+ * lonelyinteger has the following parameter(s):
+ *      int a[n]: an array of integers
+ * Returns
+ *      int: the element that occurs only once
+ * 
+ * 
  */
 
 function lonelyinteger(a: number[]): number {

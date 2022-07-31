@@ -39,13 +39,14 @@
 
 function superDigit(n: string, k: number): number {
     // Write your code here
-    n = n.repeat(k);
-    if (n.length == 1) {
-        return Number(n)*k;
+    // n = n.repeat(k);
+    if (n.length == 1 && k == 1) {
+        return Number(n);
     }
 
-    const sum = [...n].reduce((a, b) => Number(a) + Number(b), 0);
+    let sum = [...n].reduce((a, b) => BigInt(a) + BigInt(b), BigInt(0));
 
+    sum *= BigInt(k);
     return superDigit(sum.toString(), 1);
 }
 

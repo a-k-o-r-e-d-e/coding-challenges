@@ -1,2 +1,7 @@
+#Typescipt
 package-lock.json
 /node_modules
+
+# Rust 
+**/target
+**/.env

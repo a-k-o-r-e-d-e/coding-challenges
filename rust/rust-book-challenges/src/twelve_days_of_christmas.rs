@@ -35,6 +35,5 @@ pub fn play() {
             }
         }
     }
-
     println!("\nAnd a partridge in a pear tree");
 }

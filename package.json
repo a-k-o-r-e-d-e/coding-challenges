@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only hacker-rank/sum-vs-xor.ts"
+    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/fizzbuzz.ts"
   },
   "keywords": [],
   "author": "Lone Wolf",

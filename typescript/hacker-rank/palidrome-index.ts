@@ -54,3 +54,4 @@ function palindromeIndex(s: string): number {
 console.log(palindromeIndex("aaab")); // 3
 console.log(palindromeIndex("baa")); // 0
 console.log(palindromeIndex("aaa")); // -1
+ export {}

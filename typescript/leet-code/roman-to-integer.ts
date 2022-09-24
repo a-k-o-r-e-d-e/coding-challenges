@@ -99,6 +99,6 @@ function romanToInt(s: string): number {
   return result;
 }
 
-console.log(romanToInt("IV"));
-console.log(romanToInt("MCDLXXVI"));
+console.log(romanToInt("IV")); // 4
+console.log(romanToInt("MCDLXXVI")); // 1476
 

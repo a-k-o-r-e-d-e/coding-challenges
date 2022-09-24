@@ -67,20 +67,3 @@ function isPalindrome(head: ListNode | null): boolean {
     
     return true;
 };
-
-// function convertArrayToLinkedList(arr: number[]) : ListNode|null{
-//   let head: ListNode| null = null;
-
-//   if (arr.length > 0) {
-//     head = new ListNode(arr[0], null);
-//   } else {
-//     return head;
-//   }
-
-//   let next = head.next;
-//   for (let i = 1; i < arr.length ; i++) {
-//     next = 
-//   }
-  
-//   return head;
-// }

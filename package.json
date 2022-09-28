@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/fizzbuzz.ts"
+    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/k-weakest-rows-in-a-matrix.ts"
   },
   "keywords": [],
   "author": "Lone Wolf",

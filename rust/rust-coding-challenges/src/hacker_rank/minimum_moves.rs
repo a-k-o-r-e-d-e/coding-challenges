@@ -25,7 +25,7 @@
 /// @param arr2 - array to match
 /// @returns {number} - count of moves
 ///
-pub fn minimum_moves(arr1: Vec<i32>, arr2: Vec<i32>) -> i32 {
+fn minimum_moves(arr1: Vec<i32>, arr2: Vec<i32>) -> i32 {
     let mut count: i32 = 0;
 
     for i in 0..arr1.len() {
@@ -40,4 +40,9 @@ pub fn minimum_moves(arr1: Vec<i32>, arr2: Vec<i32>) -> i32 {
     }
 
     count.into()
+}
+
+pub fn run_demo() {
+    let ans = minimum_moves(vec![123, 543], vec![321, 279]);
+    println!("{ans}");
 }

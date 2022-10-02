@@ -53,7 +53,6 @@
  ///      matrix[i][j] is either 0 or 1.
  ///
  ////
-
 fn k_weakest_rows_brute_force(mat: Vec<Vec<i32>>, k: i32) -> Vec<i32> {
   let mut soldiers_count_arr: Vec<(usize, usize)> = Vec::new();
 

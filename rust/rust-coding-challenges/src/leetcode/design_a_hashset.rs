@@ -101,17 +101,17 @@ impl MyHashSet {
  * let ret_3: bool = obj.contains(key);
  */
 pub fn run_demo() {
- let mut hash_set = MyHashSet::new();
+ let mut hash_set = MyHashSet::new(); // set is []
 
- hash_set.add(1);
- hash_set.add(2);
+ hash_set.add(1); // set is [1]
+ hash_set.add(2); // set is [1, 2]
 
  println!("{}", hash_set.contains(1)); // true
  println!("{}", hash_set.contains(3)); // false (Not found)
 
- hash_set.add(2);
+ hash_set.add(2); // set is [1, 2]
  println!("{}", hash_set.contains(2)); // true
 
- hash_set.remove(2);
+ hash_set.remove(2); // set is [1]
  println!("{}", hash_set.contains(2)); // false (Already removed)
 }

@@ -1,6 +1,6 @@
-mod minimum_index_sum_of_2_lists;
+mod find_duplicate_subtrees;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    minimum_index_sum_of_2_lists::run_demo()
+    find_duplicate_subtrees::run_demo();
 }

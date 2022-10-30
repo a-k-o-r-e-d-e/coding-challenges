@@ -17,6 +17,9 @@
  */
  mod non_recursive_solution {
     use super::OptNode;
+
+    /// our solution is to push the elements of the list to an array
+    /// we then loop through the array, check that the values at both ends are equal
   pub fn is_palidrome(mut head: OptNode) -> bool {
     if head.is_none() {
       return false;
@@ -84,12 +87,18 @@ type OptNode = Option<Box<ListNode>>;
 mod resursive_solution {
     use super::OptNode;
 
+  /// Our solution is to recursively push the nodes of the list to a stack
+  /// this effectively creates a list in reverse order
+  /// we then recursively pop each list comparing each node
+  /// if the list is palindrome then each nodes will have equal value
   pub fn is_palindrome(head: OptNode) -> bool {
     let mut stack = Vec::new();
+    
     push_to_stack(&head, &mut stack);
     check(&head, &mut stack)
   }
 
+  /// recursively pops the stack and confirm that the value is equal to the corresponding node in the list
   fn check (node: &OptNode, stack: &mut Vec<i32>) -> bool{
     match node.as_ref() {
       None => stack.is_empty(),
@@ -97,6 +106,7 @@ mod resursive_solution {
     }
   }
 
+  /// recursively pushes the nodes of the list to a stack
   fn push_to_stack(node: &OptNode, stack: &mut Vec<i32>) {
     if let Some(n) = node.as_ref() {
       stack.push(n.val);

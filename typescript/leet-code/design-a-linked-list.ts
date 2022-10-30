@@ -37,10 +37,40 @@
  *      At most 2000 calls will be made to get, addAtHead, addAtTail, addAtIndex and deleteAtIndex.
  *
  */
-class MyLinkedList {
-  private head?: ListNode;
+
+abstract class LinkedList {
+  protected abstract head?: MyListNode;
 
   constructor() {}
+
+  abstract get(index: number): number;
+
+  abstract addAtHead(val: number): void;
+
+  abstract addAtTail(val: number): void;
+
+  abstract addAtIndex(index: number, val: number): void;
+
+  abstract deleteAtIndex(index: number): void;
+
+  printList() {
+    let list = [];
+    let curr = this.head;
+    while (curr) {
+      list.push(curr.val);
+      curr = curr.next;
+    }
+
+    console.log(list.reverse());
+  }
+}
+
+class MySinglyLinkedList extends LinkedList {
+  protected head?: MyListNode;
+
+  constructor() {
+    super();
+  }
 
   get(index: number): number {
     let curr = this.head;
@@ -55,13 +85,13 @@ class MyLinkedList {
   }
 
   addAtHead(val: number): void {
-    let node = new ListNode(val);
+    let node = new MyListNode(val);
     node.next = this.head;
     this.head = node;
   }
 
   addAtTail(val: number): void {
-    let node = new ListNode(val);
+    let node = new MyListNode(val);
     if (!this.head) {
       this.head = node;
     } else {
@@ -75,18 +105,17 @@ class MyLinkedList {
 
   addAtIndex(index: number, val: number): void {
     if (index == 0) {
-        this.addAtHead(val)
+      this.addAtHead(val);
     } else {
-        let node = new ListNode(val);
-        let indexPrev = this.getIndexPrev(index);
-        if (!indexPrev) {
-          return;
-        }
-        let nodeAtIndex = indexPrev?.next;
-        indexPrev.next = node;
-        node.next = nodeAtIndex;
+      let node = new MyListNode(val);
+      let indexPrev = this.getIndexPrev(index);
+      if (!indexPrev) {
+        return;
+      }
+      let nodeAtIndex = indexPrev?.next;
+      indexPrev.next = node;
+      node.next = nodeAtIndex;
     }
-    
   }
 
   deleteAtIndex(index: number): void {
@@ -102,7 +131,141 @@ class MyLinkedList {
     }
   }
 
-  private getIndexPrev(index: number): ListNode | undefined {
+  private getIndexPrev(index: number): MyListNode | undefined {
+    let curr = this.head;
+    for (let i = 0; i < index - 1; ++i) {
+      if (!curr) {
+        return;
+      }
+      curr = curr.next;
+    }
+    return curr;
+  }
+}
+
+class MyListNode {
+  val: number;
+  next?: MyListNode;
+  prev?: MyListNode;
+
+  constructor(val: number) {
+    this.val = val;
+  }
+}
+
+class MyDoublyLinkedList extends LinkedList {
+  protected head?: MyListNode;
+
+  constructor() {
+    super();
+  }
+
+  get(index: number): number {
+    let curr = this.head;
+    for (let i = 0; i < index; ++i) {
+      if (!curr) {
+        return -1;
+      }
+      curr = curr.next;
+    }
+
+    return !curr ? -1 : curr.val;
+  }
+
+  addAtHead(val: number): void {
+    let new_head = new MyListNode(val);
+    if (!this.head) {
+      this.head = new_head;
+    } else {
+      let curr_head = this.head;
+      curr_head.prev = new_head;
+      new_head.next = curr_head;
+      this.head = new_head;
+    }
+  }
+
+  addAtTail(val: number): void {
+    if (!this.head) {
+      this.addAtHead(val);
+    } else {
+      let node = new MyListNode(val);
+      let curr = this.head;
+      while (curr.next) {
+        curr = curr.next;
+      }
+      node.prev = curr;
+      curr.next = node;
+    }
+  }
+
+  addAtIndex(index: number, val: number): void {
+    if (index == 0) {
+      this.addAtHead(val);
+    } else {
+      let prevNode = this.getPrevNode(index);
+      // console.log(nodeAtIndex);
+      if (!prevNode) {
+        return;
+      }
+      let nodeAtIndex = prevNode?.next;
+      // let prevNode = nodeAtIndex.prev;
+      if (!prevNode) {
+        this.addAtHead(val);
+      }
+        else {
+        let new_node = new MyListNode(val);
+        new_node.next = nodeAtIndex;
+        new_node.prev = prevNode;
+        prevNode.next = new_node;
+        if (nodeAtIndex)
+        nodeAtIndex.prev = new_node;
+      }
+    }
+  }
+
+  private deleteAtHead(): void {
+    this.head = this.head?.next;
+    if (this.head) {
+      this.head.prev = undefined;
+    }
+  }
+
+  deleteAtIndex(index: number): void {
+    if (index == 0) {
+      this.deleteAtHead();
+    } else {
+      let nodeAtIndex = this.getNodeAtIndex(index);
+      if (!nodeAtIndex) {
+        return;
+      }
+
+      let prev_node = nodeAtIndex.prev;
+      let next_node = nodeAtIndex.next;
+
+      if (!prev_node) {
+        this.deleteAtHead();
+      } else if (!next_node) {
+        // delete at tail
+        prev_node.next = next_node;
+      } else {
+        prev_node.next = next_node;
+        next_node.prev = prev_node;
+      }
+    }
+  }
+
+  private getNodeAtIndex(index: number): MyListNode | undefined {
+    let curr = this.head;
+    for (let i = 0; i < index; i++) {
+      if (!curr) {
+        return;
+      }
+      curr = curr.next;
+    }
+    return curr;
+  }
+
+  private getPrevNode(index: number): MyListNode | undefined {
     let curr = this.head;
     for (let i = 0; i < index - 1; ++i) {
       if (!curr) {
@@ -117,27 +280,16 @@ class MyLinkedList {
     let list = [];
     let curr = this.head;
     while (curr) {
-        list.push(curr.val);
-        curr = curr.next;
+      list.push(curr.val);
+      curr = curr.next;
     }
 
     console.log(list);
   }
 }
 
-class ListNode {
-  val: number;
-  next?: ListNode;
-
-  constructor(val: number) {
-    this.val = val;
-  }
-}
-
-
-function example_demo1() {
+function example_demo1(myLinkedList: LinkedList) {
   //  Your MyLinkedList object will be instantiated and called as such:
-  let myLinkedList = new MyLinkedList();
   myLinkedList.addAtHead(1);
   myLinkedList.addAtTail(3);
   myLinkedList.printList();
@@ -149,9 +301,7 @@ function example_demo1() {
   console.log(myLinkedList.get(0)); // return 3
 }
 
-
-function example_demo2() {
-  let myLinkedList = new MyLinkedList();
+function example_demo2(myLinkedList: LinkedList) {
   myLinkedList.addAtHead(1);
   myLinkedList.addAtTail(3);
   myLinkedList.printList();
@@ -163,17 +313,37 @@ function example_demo2() {
   console.log(myLinkedList.get(0)); // return 3
 }
 
-function example_demo3 () {
-    let myLinkedList = new MyLinkedList();
-myLinkedList.addAtIndex(0, 10); // linked list becomes 10
-myLinkedList.printList();
-myLinkedList.addAtIndex(0, 20); // linked list becomes 20->10
-myLinkedList.printList();
-myLinkedList.addAtIndex(1, 30); // linked list becomes 20->30->10
-myLinkedList.printList();
-console.log(myLinkedList.get(0)); // return 20
+function example_demo3(myLinkedList: LinkedList) {
+  myLinkedList.addAtIndex(0, 10); // linked list becomes 10
+  myLinkedList.printList();
+  myLinkedList.addAtIndex(0, 20); // linked list becomes 20->10
+  myLinkedList.printList();
+  myLinkedList.addAtIndex(1, 30); // linked list becomes 20->30->10
+  myLinkedList.printList();
+  console.log(myLinkedList.get(0)); // return 20
 }
 
-example_demo3()
+function example_demo4(myLinkedList: LinkedList) {
+  myLinkedList.addAtHead(7); // linked list becomes 7
+  myLinkedList.addAtHead(2); // linked list becomes 2->7
+  myLinkedList.addAtHead(1); // linked list becomes 1->2->7
+  myLinkedList.printList();
+  myLinkedList.addAtIndex(3, 0); // linked list becomes 1->2->7->0
+  myLinkedList.printList();
+  myLinkedList.deleteAtIndex(2); // linked list becomes 1->2->0
+  myLinkedList.printList();
+  myLinkedList.addAtHead(6); // linked list becomes 6->1->2->0
+  myLinkedList.printList();
+  myLinkedList.addAtTail(4); // linked list becomes 6->1->2->0->4
+  myLinkedList.printList();
+  console.log(myLinkedList.get(4)); // return 4
+  myLinkedList.addAtIndex(5, 0); // linked list becomes 6->1->2->0->4->0
+  myLinkedList.printList();
+  myLinkedList.addAtHead(6); // linked list becomes 6->6->1->2->0->4->0
+  myLinkedList.printList();
+}
+
+
+example_demo3(new MyDoublyLinkedList());
 
 export {};

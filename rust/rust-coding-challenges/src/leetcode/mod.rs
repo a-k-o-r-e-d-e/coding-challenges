@@ -1,6 +1,6 @@
-mod find_duplicate_subtrees;
+mod merge_strings_alternatively;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    find_duplicate_subtrees::run_demo();
+    merge_strings_alternatively::run_demo();
 }

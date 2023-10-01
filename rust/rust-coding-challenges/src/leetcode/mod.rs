@@ -1,6 +1,6 @@
-mod merge_strings_alternatively;
+mod gcd_of_strings;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    merge_strings_alternatively::run_demo();
+    gcd_of_strings::run_demo();
 }

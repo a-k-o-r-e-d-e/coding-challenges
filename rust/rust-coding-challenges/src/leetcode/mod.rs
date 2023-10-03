@@ -1,6 +1,6 @@
-mod move_zeroes;
+mod max_avg_subarray;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    move_zeroes::run_demo();
+    max_avg_subarray::run_demo();
 }

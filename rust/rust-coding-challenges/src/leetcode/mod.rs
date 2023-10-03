@@ -1,6 +1,6 @@
-mod gcd_of_strings;
+mod move_zeroes;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    gcd_of_strings::run_demo();
+    move_zeroes::run_demo();
 }

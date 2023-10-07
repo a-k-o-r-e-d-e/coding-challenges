@@ -1,6 +1,6 @@
-mod max_avg_subarray;
+mod find_highest_altitude;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    max_avg_subarray::run_demo();
+    find_highest_altitude::run_demo();
 }

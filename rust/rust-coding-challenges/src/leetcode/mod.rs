@@ -1,6 +1,6 @@
-mod find_highest_altitude;
+mod diff_of_two_arrays;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    find_highest_altitude::run_demo();
+    diff_of_two_arrays::run_demo();
 }

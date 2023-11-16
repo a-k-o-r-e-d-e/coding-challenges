@@ -1,6 +1,6 @@
-mod diff_of_two_arrays;
+mod remove_stars_from_string;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    diff_of_two_arrays::run_demo();
+    remove_stars_from_string::run_demo();
 }

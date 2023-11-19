@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/merge_strings_alternatively.ts"
+    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/number_of_recent_calls.ts"
   },
   "keywords": [],
   "author": "Lone Wolf",

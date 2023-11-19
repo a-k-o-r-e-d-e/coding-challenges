@@ -1,5 +1,5 @@
 /// Implementing a Graph in Typescript
-import { Queue } from "./queue-implementation";
+import { ArrayQueue } from "./queue-implementation";
 
 // create a graph class
 class Graph<T> {
@@ -49,7 +49,7 @@ class Graph<T> {
     /// create the visited object, stores nodes that have been visited
     let visited = new Map<T, boolean>();
 
-    let queue = new Queue<T>();
+    let queue = new ArrayQueue<T>();
 
     // add the starting node to the queue
     visited.set(startingNode, true);
@@ -79,7 +79,7 @@ class Graph<T> {
     }
   }
 
-  dfs (startingNode: T) {
+  dfs(startingNode: T) {
     let visitedNodes = new Map<T, boolean>();
 
     this.DFSUtil(startingNode, visitedNodes);
@@ -94,10 +94,10 @@ class Graph<T> {
     let get_neighbours = this.adjList.get(vert) ?? [];
 
     for (let i = 0; i < get_neighbours.length; i++) {
-        let get_elem = get_neighbours[i];
-        if (!visited.get(get_elem)) {
-            this.DFSUtil(get_elem, visited)
-        }
+      let get_elem = get_neighbours[i];
+      if (!visited.get(get_elem)) {
+        this.DFSUtil(get_elem, visited);
+      }
     }
   }
 }
@@ -137,12 +137,11 @@ g.printGraph();
 console.log("***************BFS***************");
 g.bfs("A");
 
-
 // prints
 // DFS
 // A B C E D F
 console.log("***************DFS***************");
-g.dfs('A');
+g.dfs("A");
 
 /// here just to Solve - Duplicate identifier error in TypeScript
 export {};

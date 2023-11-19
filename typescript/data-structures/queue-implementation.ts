@@ -1,35 +1,53 @@
 /// Implementing a Queue in Typescript
 
-// Queue class
-export class Queue<T> {
-  // Array is used to implement a Queue
-  private items: T[] = [];
+/** Queue Implemented using an array underneath */
+export class ArrayQueue<T> {
+  public constructor(
+    private elements: T[] = [],
+    private head: number = 0,
+  ) {}
 
-  enqueue(item: T) {
-    this.items.push(item);
+  public enqueue(element: T): void {
+    this.elements.push(element)
   }
 
-  dequeue(): T | undefined {
-    return this.items.shift();
+  public dequeue(): T {
+    const item = this.elements[this.head];
+    this.head++;
+
+    if (this.isEmpty) {
+      this.resetQueue();
+    }
+
+    return item;
   }
 
-  front(): T | undefined {
-    return this.items[0];
+  public peek(): T {
+    return this.elements[this.head];
   }
 
-  isEmpty(): boolean {
-    return this.items.length == 0;
+  public get length(): number {
+    return this.elements.length - this.head;
+  }
+
+  public get isEmpty(): boolean {
+    return this.length === 0;
+  }
+
+  private resetQueue () : void {
+    this.head = 0;
+    this.elements = [];
   }
 
   printQueue(): void {
-    console.log(this.items);
+    console.log(this.elements);
   }
 }
 
 // Function to generate binary numbers
 function generatePrintBinary(n: number) {
   // create an empty queue of strings
-  var queue = new Queue<string>();
+  var queue = new ArrayQueue<string>();
 
   // Enqueue the first binary number
   queue.enqueue("1");
@@ -54,24 +72,24 @@ function generatePrintBinary(n: number) {
 
 // calling the above function
 // prints [1 10 11 100 101]
-generatePrintBinary(5);
+// generatePrintBinary(5);
 
 
-console.log("******* Queue without Array.shift ********");
-// Our Original Queue makes use of Array.prototype.shift() method to dequeue
+// Our Original Queue makes use of an Array
 // This method can be quite expensive so lets try to an implement an array without having to call shift()
 type Node<T> = {
   data: T;
   next?: Node<T>;
-}
-class EfficientQueue <T> {
+}; 
+/** Queue Implemented using a linked list underneath */
+class LinkedListQueue<T> {
   private head?: Node<T>;
   private tail?: Node<T>;
   length = 0;
 
-  enqueue(data : T) {
+  enqueue(data: T) {
     this.length++;
-    const node = {data, next: undefined};
+    const node = { data, next: undefined };
     if (!this.head) {
       this.head = this.tail = node;
       return;
@@ -89,8 +107,8 @@ class EfficientQueue <T> {
     return this.head.data;
   }
 
-  deque () {
-    this.length --;
+  deque() {
+    this.length--;
     if (!this.head) {
       return;
     }

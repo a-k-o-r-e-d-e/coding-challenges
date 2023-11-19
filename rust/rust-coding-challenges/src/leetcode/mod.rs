@@ -1,6 +1,6 @@
-mod remove_stars_from_string;
+mod number_of_recent_calls;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    remove_stars_from_string::run_demo();
+    number_of_recent_calls::run_demo();
 }

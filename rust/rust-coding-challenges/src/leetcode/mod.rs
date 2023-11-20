@@ -1,6 +1,6 @@
-mod number_of_recent_calls;
+mod delete_middle_of_linked_list;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    number_of_recent_calls::run_demo();
+    delete_middle_of_linked_list::run_demo();
 }

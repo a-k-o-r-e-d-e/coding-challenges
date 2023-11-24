@@ -174,3 +174,5 @@ console.log(
   "input tree 3 solution: \n",
   findDuplicateSubtreesUsingSerialIds(inputTree3)
 );
+
+export {}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/delete_middle_of_linked_list.ts"
+    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/max_depth_of_binary_tree.ts"
   },
   "keywords": [],
   "author": "Lone Wolf",

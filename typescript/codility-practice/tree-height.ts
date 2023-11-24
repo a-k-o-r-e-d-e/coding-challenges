@@ -64,3 +64,5 @@ function treeHeight(tree?: TreeNode): number {
 
     return 1 + Math.max(treeHeight(tree.l), treeHeight(tree.r));
 }
+
+export {}

@@ -1,6 +1,6 @@
-mod delete_middle_of_linked_list;
+mod max_depth_of_binary_tree;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    delete_middle_of_linked_list::run_demo();
+    max_depth_of_binary_tree::run_demo();
 }

@@ -1,6 +1,6 @@
-mod max_depth_of_binary_tree;
+mod leaf_similar_trees;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    max_depth_of_binary_tree::run_demo();
+    leaf_similar_trees::run_demo();
 }

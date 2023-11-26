@@ -43,7 +43,7 @@ class RecentCounter {
 
   private computeRecentCalls(t: number): number {
     const rangeStart = t - 3000;
-    while (this.queue.peek() < rangeStart) {
+    while (this.queue.peekFront() < rangeStart) {
       this.queue.dequeue();
     }
 

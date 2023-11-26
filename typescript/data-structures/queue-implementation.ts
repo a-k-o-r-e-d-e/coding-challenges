@@ -2,13 +2,10 @@
 
 /** Queue Implemented using an array underneath */
 export class ArrayQueue<T> {
-  public constructor(
-    private elements: T[] = [],
-    private head: number = 0,
-  ) {}
+  public constructor(private elements: T[] = [], private head: number = 0) {}
 
   public enqueue(element: T): void {
-    this.elements.push(element)
+    this.elements.push(element);
   }
 
   public dequeue(): T {
@@ -22,8 +19,12 @@ export class ArrayQueue<T> {
     return item;
   }
 
-  public peek(): T {
+  public peekFront(): T {
     return this.elements[this.head];
+  }
+
+  public peekBack(): T {
+    return this.elements[this.elements.length - 1];
   }
 
   public get length(): number {
@@ -34,7 +35,7 @@ export class ArrayQueue<T> {
     return this.length === 0;
   }
 
-  private resetQueue () : void {
+  private resetQueue(): void {
     this.head = 0;
     this.elements = [];
   }
@@ -74,15 +75,14 @@ function generatePrintBinary(n: number) {
 // prints [1 10 11 100 101]
 // generatePrintBinary(5);
 
-
 // Our Original Queue makes use of an Array
 // This method can be quite expensive so lets try to an implement an array without having to call shift()
 type Node<T> = {
   data: T;
   next?: Node<T>;
-}; 
+};
 /** Queue Implemented using a linked list underneath */
-class LinkedListQueue<T> {
+export class LinkedListQueue<T> {
   private head?: Node<T>;
   private tail?: Node<T>;
   length = 0;

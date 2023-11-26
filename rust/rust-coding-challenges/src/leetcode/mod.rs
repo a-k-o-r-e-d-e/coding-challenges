@@ -1,6 +1,6 @@
-mod leaf_similar_trees;
+mod binary_tree_right_side_view;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    leaf_similar_trees::run_demo();
+    binary_tree_right_side_view::run_demo();
 }

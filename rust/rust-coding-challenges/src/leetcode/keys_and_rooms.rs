@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 /**
  * There are n rooms labeled from 0 to n - 1 and all the rooms are locked except for room 0.
  * Your goal is to visit all the rooms.
@@ -36,28 +37,26 @@
  * All the values of rooms[i] are unique.
  */
 
- fn can_visit_all_rooms(rooms: Vec<Vec<i32>>) -> bool {
-        let mut visited = vec![false; rooms.len()];
-        visited[0] = true;
-        let mut stack: Vec<usize> = vec![0];
+fn can_visit_all_rooms(rooms: Vec<Vec<i32>>) -> bool {
+    let mut visited = HashSet::new();
+    let mut stack: Vec<i32> = vec![0];
 
-        while stack.len() > 0 {
-            let room = stack.pop().unwrap();
-            let keys: &Vec<i32> = rooms[room].as_ref();
-            for key in keys {
-                let key_as_uszize = key.clone() as usize;
-                if visited[key_as_uszize] == false {
-                    visited[key_as_uszize] = true;
-                    stack.push(key_as_uszize);
-                }
-            }
+    while stack.len() > 0 {
+        let room = stack.pop().unwrap();
+        if visited.contains(&room) {continue;
         }
-        return !visited.contains(&false);
+        let keys: &Vec<i32> = rooms[room as usize].as_ref();
+        for key in keys {
+                stack.push(key.clone());
+            }
+        visited.insert(room);
+    }
+    return visited.len() == rooms.len();
 }
 
 pub fn run_demo() {
-    let array_a = vec![vec![1],vec![2],vec![3],vec![]];
-    let array_b = vec![vec![1,3],vec![3,0,1],vec![2],vec![0]];
+    let array_a = vec![vec![1], vec![2], vec![3], vec![]];
+    let array_b = vec![vec![1, 3], vec![3, 0, 1], vec![2], vec![0]];
 
     println!("{}", can_visit_all_rooms(array_a));
     println!("{}", can_visit_all_rooms(array_b));

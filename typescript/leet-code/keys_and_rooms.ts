@@ -37,22 +37,19 @@
  */
 
 function canVisitAllRooms(rooms: number[][]): boolean {
-  let visited:boolean[] = new Array(rooms.length).fill(false);
-  visited[0] = true;
-  let stack = [0];  
+  let stack: number[] = [0];
+    let visited = new Set();
 
-  while (stack.length > 0) {
-    const room = stack.pop()!;
-    const  keys = rooms[room];
-    for (let key of keys) {
-        if (visited[key] == false) {
-            visited[key] = true;
-            stack.push(key);
-        }
+    while(stack.length){
+        let curr = stack.pop()!;
+        if(visited.has(curr)) continue;
+        
+        stack.push(...rooms[curr]);
+
+        visited.add(curr)
     }
-  }
 
-  return !visited.includes(false);
+    return visited.size === rooms.length;
 };
 
 function run_demo () {

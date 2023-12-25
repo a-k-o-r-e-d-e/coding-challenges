@@ -1,6 +1,6 @@
-mod search_in_a_binary_tree;
+mod keys_and_rooms;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    search_in_a_binary_tree::run_demo();
+    keys_and_rooms::run_demo();
 }

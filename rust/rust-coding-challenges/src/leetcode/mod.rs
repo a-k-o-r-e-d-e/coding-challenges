@@ -1,6 +1,6 @@
-mod binary_tree_right_side_view;
+mod search_in_a_binary_tree;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    binary_tree_right_side_view::run_demo();
+    search_in_a_binary_tree::run_demo();
 }

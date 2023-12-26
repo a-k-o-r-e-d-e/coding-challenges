@@ -1,6 +1,6 @@
-mod keys_and_rooms;
+mod number_of_provinces;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    keys_and_rooms::run_demo();
+    number_of_provinces::run_demo();
 }

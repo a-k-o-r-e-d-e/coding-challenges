@@ -34,58 +34,89 @@
  *
  */
 
+function findCircleNumBruteForce(isConnected: number[][]): number {
+  let provinces: Set<number>[] = [];
+  let city_provinces: number[] = [];
+  let province_count = isConnected.length;
 
-function findCircleNum(isConnected: number[][]): number {
-    let provinces: Set<number>[] = [];
-    let city_provinces:number[] = [];
-    let province_count = isConnected.length;
+  // more efficient to initialise arrays in one for loop.
+  for (let k = 0; k < isConnected.length; k++) {
+    provinces.push(new Set());
+    provinces[k].add(k);
+    city_provinces.push(k);
+  }
 
-    // more efficient to initialise arrays in one for loop.
-    for (let k = 0; k < isConnected.length; k++) {
-        provinces.push(new Set());
-        provinces[k].add(k);
-        city_provinces.push(k);
-    }
+  for (let i = 0; i < isConnected.length; i++) {
+    for (let j = i + 1; j < isConnected.length; j++) {
+      if (isConnected[i][j] == 1 && city_provinces[i] != city_provinces[j]) {
+        // add city j to city i province.
+        // merge the provinces.
 
-    for (let i = 0; i < isConnected.length; i++) {
-        for (let j = i+1; j <isConnected.length; j++) {
-            if (isConnected[i][j] == 1 && city_provinces[i] != city_provinces[j]) {
-              // add city j to city i province.
-              // merge the provinces.
+        let province_i = city_provinces[i];
+        let province_j = city_provinces[j];
 
-              let province_i = city_provinces[i];
-              let province_j = city_provinces[j];
-
-              // Update city_provinces for moved cities
-              for (let city of provinces[province_j]) {
-                city_provinces[city] = province_i;
-                provinces[province_i].add(city);
-              }
-
-              provinces[j].clear();
-              province_count--;
-            }
+        // Update city_provinces for moved cities
+        for (let city of provinces[province_j]) {
+          city_provinces[city] = province_i;
+          provinces[province_i].add(city);
         }
+
+        provinces[j].clear();
+        province_count--;
+      }
     }
+  }
 
-    return province_count;
-};
-
-function run_demo() {
-    let array_a = [
-      [1, 1, 0],
-      [1, 1, 0],
-      [0, 0, 1],
-    ];
-
-    let array_b = [
-      [1, 0, 0],
-      [0, 1, 0],
-      [0, 0, 1],
-    ];
-    
-    console.log(findCircleNum(array_a));
-    console.log(findCircleNum(array_b))
+  return province_count;
 }
 
-run_demo()
+function findCircleNumDFS(isConnected: number[][]): number {
+  let visited = new Array(isConnected.length).fill(false);
+  let province_count = 0;
+
+  for (let city = 0; city < isConnected.length; city++) {
+    if (visited[city] == false) {
+      province_count++;
+      dfs(city, isConnected, visited);
+    }
+  }
+
+  return province_count;
+}
+
+function dfs(city: number, graph: number[][], visited: boolean[]) {
+  visited[city] = true;
+
+  for (
+    let neighbor = 0;
+    neighbor < graph[city].length;
+    neighbor++
+  ) {
+    if (graph[city][neighbor] === 1 && visited[neighbor] == false) {
+      dfs(neighbor, graph, visited);
+    }
+  }
+}
+
+function run_demo() {
+  let array_a = [
+    [1, 1, 0],
+    [1, 1, 0],
+    [0, 0, 1],
+  ];
+
+  let array_b = [
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 1],
+  ];
+
+//   console.log(findCircleNumBruteForce(array_a));
+//   console.log(findCircleNumBruteForce(array_b));
+
+ console.log(findCircleNumDFS(array_a));
+  console.log(findCircleNumDFS(array_b));
+
+}
+
+run_demo();

@@ -1,6 +1,6 @@
-mod number_of_provinces;
+mod nearest_exit_from_entrance_in_maze;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    number_of_provinces::run_demo();
+    nearest_exit_from_entrance_in_maze::run_demo();
 }

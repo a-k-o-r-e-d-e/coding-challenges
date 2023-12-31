@@ -1,6 +1,6 @@
-mod nearest_exit_from_entrance_in_maze;
+mod kth_largest_element_in_array;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    nearest_exit_from_entrance_in_maze::run_demo();
+    kth_largest_element_in_array::run_demo();
 }

@@ -255,9 +255,9 @@ class HeapPriorityQueue<E> implements PriorityQueueContract<E> {
    * The format isn't significant, and may change in the future.
    */
   toString(): string {
-    for (let i = 0; i < this.length; i++) {
-      console.log(this.queue[i]);
-    }
+    // for (let i = 0; i < this.length; i++) {
+    //   console.log(this.queue[i]);
+    // }
     return this.queue.slice(0, this.length).toString();
   }
 

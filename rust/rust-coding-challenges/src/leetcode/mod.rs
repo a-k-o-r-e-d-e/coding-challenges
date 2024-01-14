@@ -1,6 +1,6 @@
-mod kth_largest_element_in_array;
+mod smallest_number_in_infinite_set;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    kth_largest_element_in_array::run_demo();
+    smallest_number_in_infinite_set::run_demo();
 }

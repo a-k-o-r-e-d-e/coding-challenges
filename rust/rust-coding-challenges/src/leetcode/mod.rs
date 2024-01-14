@@ -1,6 +1,6 @@
-mod smallest_number_in_infinite_set;
+mod successful_pairs_of_spells_and_potions;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    smallest_number_in_infinite_set::run_demo();
+    successful_pairs_of_spells_and_potions::run_demo();
 }

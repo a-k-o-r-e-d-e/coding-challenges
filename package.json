@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/successful_pairs_of_spells_and_potions.ts"
+    "dev": "NODE_ENV=dev ts-node-dev --respawn --pretty --transpile-only typescript/leet-code/koko_eating_bananas.ts"
   },
   "keywords": [],
   "author": "Lone Wolf",

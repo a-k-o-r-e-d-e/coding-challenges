@@ -1,6 +1,6 @@
-mod successful_pairs_of_spells_and_potions;
+mod koko_eating_bananas;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    successful_pairs_of_spells_and_potions::run_demo();
+    koko_eating_bananas::run_demo();
 }

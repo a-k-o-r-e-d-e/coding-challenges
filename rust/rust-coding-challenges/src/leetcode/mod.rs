@@ -1,6 +1,6 @@
-mod koko_eating_bananas;
+mod kids_with_greatest_number_of_candies;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    koko_eating_bananas::run_demo();
+    kids_with_greatest_number_of_candies::run_demo();
 }

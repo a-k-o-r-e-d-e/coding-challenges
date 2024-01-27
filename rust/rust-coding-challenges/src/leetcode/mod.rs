@@ -1,6 +1,6 @@
-mod kids_with_greatest_number_of_candies;
+mod reverse_words_in_a_string;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    kids_with_greatest_number_of_candies::run_demo();
+    reverse_words_in_a_string::run_demo();
 }

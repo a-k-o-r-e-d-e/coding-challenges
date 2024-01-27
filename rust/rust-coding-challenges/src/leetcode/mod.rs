@@ -1,6 +1,6 @@
-mod is_subsequence;
+mod container_with_most_water;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    is_subsequence::run_demo();
+    container_with_most_water::run_demo();
 }

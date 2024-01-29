@@ -1,6 +1,6 @@
-mod find_pivot_index;
+mod unique_number_of_occurences;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    find_pivot_index::run_demo();
+    unique_number_of_occurences::run_demo();
 }

@@ -1,6 +1,6 @@
-mod dota2_senate;
+mod max_twin_sum_of_linked_list;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    dota2_senate::run_demo();
+    max_twin_sum_of_linked_list::run_demo();
 }

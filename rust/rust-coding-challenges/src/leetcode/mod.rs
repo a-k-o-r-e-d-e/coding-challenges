@@ -1,6 +1,6 @@
-mod asteriod_collisions;
+mod dota2_senate;
 
 pub fn run_demo() {
     println!("*** Now running Leetcode challenges*** ");
-    asteriod_collisions::run_demo();
+    dota2_senate::run_demo();
 }

@@ -58,3 +58,45 @@ function findMedianSortedArrays_bruteForce(
   return median || 0;
 }
 
+
+function findMedianSortedArrays_binarySearch(
+  nums1: number[],
+  nums2: number[]
+): number {
+  let [A, B] = [nums1, nums2];
+  let total = nums1.length + nums2.length;
+  let half = Math.floor(total / 2);
+
+  if (B.length < A.length) {
+    [A, B] = [B, A];
+  }
+
+  let [left, right] = [0, A.length - 1];
+
+  while (true) {
+    let i = Math.floor((left + right) / 2);
+    let j = half - i - 2;
+
+    let Aleft = i >= 0 ? A[i] : Number.NEGATIVE_INFINITY;
+    let Aright = i + 1 < A.length ? A[i + 1] : Number.POSITIVE_INFINITY;
+
+    let Bleft = j >= 0 ? B[j] : Number.NEGATIVE_INFINITY;
+    let Bright = j + 1 < B.length ? B[j + 1] : Number.POSITIVE_INFINITY;
+
+    // Partition is correct
+    if (Aleft <= Bright && Bleft <= Aright) {
+      // Odd
+      if (total % 2 !== 0) {
+        console.log(`Aleft: ${Aright}, Bright: ${Bright}`);
+        return Math.min(Aright, Bright);
+      }
+
+      // Even
+      return (Math.max(Aright, Bleft) + Math.min(Aright, Bright)) / 2;
+    } else if (Aleft > Bright) {
+      right = i - 1;
+    } else {
+      left = i + 1;
+    }
+  }
+}

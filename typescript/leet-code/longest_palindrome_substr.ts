@@ -53,3 +53,35 @@ function isPalindrome(s: string, left: number, right: number): boolean {
 
   return isPalindrome(s, left + 1, right - 1);
 }
+
+
+function longestPalindrome_expandFromCenter(s: string): string {
+  if (s.length <= 1) {
+    return s;
+  }
+
+  let maxStr = s[0];
+
+  for (let i = 0; i < s.length - 1; i++) {
+    const odd = expandFromCenter(s, i, i);
+    const even = expandFromCenter(s, i, i + 1);
+
+    if (odd.length > maxStr.length) {
+      maxStr = odd;
+    }
+
+    if (even.length > maxStr.length) {
+      maxStr = even;
+    }
+  }
+
+  return maxStr;
+}
+
+function expandFromCenter(s: string, left: number, right: number): string {
+  while (left >= 0 && right < s.length && s[left] === s[right]) {
+    left -= 1;
+    right += 1;
+  }
+  return s.substring(left + 1, right);
+}

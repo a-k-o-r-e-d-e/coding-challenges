@@ -34,7 +34,7 @@
  * 1 <= numRows <= 1000
  */
 
-function convert_bruteforce(s: string, numRows: number): string {
+function convert_zigzag_bruteforce(s: string, numRows: number): string {
   const numDiagonals = numRows - 2;
   let output = "";
 
@@ -67,4 +67,44 @@ function convert_bruteforce(s: string, numRows: number): string {
     }
   }
   return output;
+}
+
+/**
+ * All we have to do is that we just move up and down.
+ * More precisely, if we reach numsRows - 1, we move up next time and if we reach the first row, we move down next time.
+ *
+ * We will create a direction variable to handle moving direction.
+ * When we move down, the variable has 1. On the other hand, when we move up, the variable has -1.
+ */
+function convert_zigzag_diagonal_solution(s: string, numRows: number): string {
+  if (numRows == 1 || numRows >= s.length) {
+    return s;
+  }
+
+  let idx = 0;
+  let d = 1; // direction
+  let rows: any = Array.from({ length: numRows }, () => []);
+
+  // console.log("Rows Before: ", rows)
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    // console.log("Idx:: ", idx, "--Char: ", char)
+    rows[idx].push(char);
+    if (idx === 0) {
+      d = 1;
+    } else if (idx === numRows - 1) {
+      d = -1;
+    }
+
+    idx += d;
+  }
+
+  // console.log("Rows: ", rows);
+
+  for (let i = 0; i < numRows; i++) {
+    rows[i] = rows[i].join("");
+  }
+
+  return rows.join("");
 }

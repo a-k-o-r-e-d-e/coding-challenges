@@ -46,3 +46,30 @@ class StringManipulationSolution:
         return result
 
 
+class MathematicalOpsSolution:
+    def reverse(self, x: int) -> int:
+
+        max_32_bit_int = (2**31) - 1
+
+        sign = -1 if x < 0 else 1
+
+        x = abs(x) # number is now positive
+
+        if x < 10:
+            return x*sign
+
+        result = 0
+
+        while x > 0:
+            # Pop the last digit
+            digit = x % 10
+            x = x//10
+
+            # Check 1: Will multiplying by 10 exceed the limit?
+            if result > (max_32_bit_int//10) :
+                return 0
+            
+            # Push the digit
+            result = (result *10)+digit
+        
+        return sign * result

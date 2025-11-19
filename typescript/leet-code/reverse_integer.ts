@@ -44,3 +44,38 @@ function reverse_string_manipulation_solution(x: number): number {
 
   return result;
 }
+
+function reverse_mathematical_solution(x: number): number {
+    const max32Bit = (2**31) -1
+
+    const sign = x<0 ? -1: 1
+
+    x = Math.abs(x) // Ensure number is now positive
+
+    if (x <10) {
+        return x * sign
+    }
+
+    let result = 0;
+
+    while (x > 0) {
+        // Pop the last digit
+        const digit = x % 10
+        x = Math.floor(x/10)
+
+        // Check: will multiplying by 10 exceed the limit?
+        if (result > Math.floor(max32Bit/10)) {
+            return 0
+        }
+
+        if (result === Math.floor(max32Bit/10) && digit > 7) {
+            return 0
+        }
+
+        // Push the digit
+        result = (result * 10) + digit // eg: 3 * 10 + 7 = 37
+
+    }
+
+    return sign * result
+};

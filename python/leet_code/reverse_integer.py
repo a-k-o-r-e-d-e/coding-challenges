@@ -69,6 +69,11 @@ class MathematicalOpsSolution:
             if result > (max_32_bit_int//10) :
                 return 0
             
+            # Check 2: If we are right at the edge, will adding the digit exceed it?
+            # INT_MAX is 2,147,483,647. The last digit is 7.
+            if result == (max_32_bit_int // 10) and digit > 7:
+                return 0
+            
             # Push the digit
             result = (result *10)+digit
         

@@ -35,6 +35,10 @@
  */
 
 function convert_zigzag_bruteforce(s: string, numRows: number): string {
+    if (numRows == 1 || numRows >= s.length) {
+      return s;
+    }
+
   const numDiagonals = numRows - 2;
   let output = "";
 
@@ -87,8 +91,7 @@ function convert_zigzag_diagonal_solution(s: string, numRows: number): string {
 
   // console.log("Rows Before: ", rows)
 
-  for (let i = 0; i < s.length; i++) {
-    const char = s[i];
+  for (let char of s) {
     // console.log("Idx:: ", idx, "--Char: ", char)
     rows[idx].push(char);
     if (idx === 0) {

@@ -62,3 +62,34 @@ function preorderTraversal_recursive(root: TreeNode | null): number[] {
 
     return [root.val, ...preorderTraversal_recursive(root.left), ...preorderTraversal_recursive(root.right)]
 };
+
+
+// Create an empty stack and push root node to stack. 
+// Do the following while is not empty. 
+//  Pop an item from the stack and print it. 
+//  Push right child of a popped item to stack 
+//  Push left child of a popped item to stack
+// The right child is pushed before the left child to make sure that the left subtree is processed first.
+function preorderTraversal_iterative(root: TreeNode | null): number[] {
+    if (!root) {
+        return []
+    }
+
+    let stack = [root]
+    let ans =[]
+
+    while (stack.length > 0){
+        let curr = stack.pop()!;
+        ans.push(curr.val)
+
+        if (curr.right){
+            stack.push(curr.right)
+        }
+
+        if (curr.left){
+            stack.push(curr.left)
+        }
+    }
+
+    return ans
+}

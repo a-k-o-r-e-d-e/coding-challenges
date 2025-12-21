@@ -62,3 +62,30 @@ function inorderTraversal_recursive(root: TreeNode | null): number[] {
 
     return [...inorderTraversal_recursive(root.left), root.val, ...inorderTraversal_recursive(root.right)]
 };
+
+function inorderTraversal_iterative(root: TreeNode | null): number[] {
+    let ans = []
+    let stack = []
+    let curr = root;
+
+    while (curr !== null || stack.length > 0) {
+        // Reach the left most Node of the curr Node
+        while (curr !== null ) {
+            // Push node on stack 
+            // # before traversing node's left subtree
+            stack.push(curr)
+            curr = curr.left
+        }
+
+        // curr must be NULL at this point
+        curr = stack.pop()!
+        ans.push(curr.val)
+
+        // # we have visited the node and its
+        // # left subtree. Now, it's right
+        // # subtree's turn
+        curr = curr.right
+    }
+
+    return ans;
+};

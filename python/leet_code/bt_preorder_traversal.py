@@ -56,3 +56,32 @@ class RecursiveSolution:
             return []
         
         return [root.val, *self.preorderTraversal(root.left), *self.preorderTraversal(root.right)]
+    
+class IterativeSolution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        """
+        // Create an empty stack and push root node to stack. 
+        // Do the following while is not empty. 
+        //  Pop an item from the stack and print it. 
+        //  Push right child of a popped item to stack 
+        //  Push left child of a popped item to stack
+        // The right child is pushed before the left child to make sure that the left subtree is processed first.
+        """
+        
+        if root is None:
+            return []
+        
+        stack = [root]
+        ans = []
+
+        while len(stack) > 0:
+            curr = stack.pop()
+            ans.append(curr.val)
+
+            if curr.right is not None:
+                stack.append(curr.right)
+
+            if curr.left is not None:
+                stack.append(curr.left)
+            
+        return ans

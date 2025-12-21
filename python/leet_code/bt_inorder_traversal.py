@@ -56,3 +56,28 @@ class RecursiveSolution:
             return []
         
         return [*self.inorderTraversal(root.left), root.val, *self.inorderTraversal(root.right)]
+
+class IterativeSolution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        s = []
+        curr = root
+
+        while curr is not None or len(s) > 0:
+            # Reach the left most Node of the curr Node
+            while curr is not None:
+                # Push node on stack 
+                # before traversing node's left subtree
+                s.append(curr)
+                curr = curr.left
+            
+            # curr must be NULL at this point
+            curr = s.pop()
+            ans.append(curr.val)
+
+            # we have visited the node and its
+            # left subtree. Now, it's right
+            # subtree's turn
+            curr = curr.right
+        
+        return ans

@@ -56,3 +56,33 @@ class RecursiveSolution:
             return []
 
         return [*self.postorderTraversal(root.left), *self.postorderTraversal(root.right), root.val]
+
+class IterativeSolution:
+    """
+    Postorder traversal using two stacks.
+        Push root to first stack.
+        Loop until first stack is not empty
+            Pop a node from first stack and push it to second stack
+            Push left and right children of the popped node to first stack
+        Print contents of second stack
+    """
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if root is None:
+            return []
+        
+        stack1 = [root]
+        stack2 = []
+
+        while len(stack1) > 0:
+            curr = stack1.pop()
+
+            stack2.append(curr.val)
+
+            if curr.left is not None:
+                stack1.append(curr.left)
+            
+            if curr.right is not None:
+                stack1.append(curr.right)
+                
+        stack2.reverse()
+        return stack2

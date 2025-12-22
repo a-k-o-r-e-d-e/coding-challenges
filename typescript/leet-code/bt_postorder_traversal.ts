@@ -52,3 +52,35 @@ function postorderTraversal_recursive(root: TreeNode | null): number[] {
   ];
 }
 
+/**
+Postorder traversal using two stacks.
+    Push root to first stack.
+    Loop until first stack is not empty
+        Pop a node from first stack and push it to second stack
+        Push left and right children of the popped node to first stack
+    Print contents of second stack
+*/
+function postorderTraversal_iterative(root: TreeNode | null): number[] {
+    if (!root) {
+        return []
+    }
+
+    let stack1 = [root]
+    let stack2 = []
+
+    while (stack1.length > 0) {
+        const curr = stack1.pop()!
+
+        stack2.push(curr.val)
+
+        if (curr.left) {
+            stack1.push(curr.left)
+        }
+
+        if (curr.right) {
+            stack1.push(curr.right)
+        }
+    }
+
+    return stack2.reverse()
+};

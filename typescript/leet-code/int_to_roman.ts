@@ -131,3 +131,46 @@ function intToRoman_iterative(num: number): string {
 
     return res;
 };
+
+function intToRoman_recursive(num: number): string {
+  if (num < 1) return "";
+  const numStr = String(num);
+
+  const firstDigit = numStr[0];
+
+  if (!["9", "4"].includes(firstDigit)) {
+    const [symbol, value] = computeSymbol(num);
+    return `${symbol}` + intToRoman_recursive(num - value);
+  }
+
+  const [symbol, value] = getSubtractiveForm(Number(firstDigit), numStr.length);
+  return symbol + intToRoman_recursive(num - value);
+}
+
+function getSubtractiveForm(firstDigit: number, len: number): [string, number] {
+  if (firstDigit == 4 && len === 1) {
+    return ["IV", 4];
+  }
+
+  if (firstDigit === 9 && len === 1) return ["IX", 9];
+
+  if (firstDigit === 4 && len === 2) return ["XL", 40];
+
+  if (firstDigit === 9 && len === 2) return ["XC", 90];
+
+  if (firstDigit === 4 && len === 3) return ["CD", 400];
+
+  if (firstDigit === 9 && len === 3) return ["CM", 900];
+
+  throw new Error(`[Should be unreachable] FD: ${firstDigit}  -- Len: ${len}`);
+}
+
+function computeSymbol(num: number): [string, number] {
+  if (num >= 1000) return ["M", 1000];
+  if (num >= 500) return ["D", 500];
+  if (num >= 100) return ["C", 100];
+  if (num >= 50) return ["L", 50];
+  if (num >= 10) return ["X", 10];
+  if (num >= 5) return ["V", 5];
+  return ["I", 1];
+}

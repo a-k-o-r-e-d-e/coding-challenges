@@ -116,3 +116,49 @@ class RecursiveSolution:
         # subtract its value and convert the remainder to a roman numeral.
             (symbol, value) = self.computeSubtractiveForm(int(first_digit), len(num_str))
             return symbol + self.intToRoman(num-value)
+
+class IterativeSolution:
+    def intToRoman(self, num: int) -> str:
+        #use insert to the first item or string = item + string
+        #for i, n in enumerate(str(num)):
+        out = ''
+        while num>=1000: 
+            out += 'M'
+            num = num-1000
+        while num>=900: 
+            out+= 'CM'
+            num = num-900
+        while num>=500: 
+            out +='D'
+            num = num-500
+        while num>=400: 
+            out += 'CD'
+            num = num-400
+        while num>=100: 
+            out += 'C'
+            num = num-100
+        while num >=90: 
+            out += 'XC'
+            num = num - 90
+        while num>=50: 
+            out += 'L'
+            num = num-50
+        while num>=40: 
+            out += 'XL'
+            num = num-40
+        while num>=10: 
+            out += 'X'
+            num = num-10
+        while num>=9: 
+            out += 'IX'
+            num = num - 9
+        while num >= 5: 
+            out += 'V'
+            num = num-5
+        while num >= 4: 
+            out += 'IV'
+            num = num-4
+        while num >= 1: 
+            out += 'I'
+            num += -1
+        return out
